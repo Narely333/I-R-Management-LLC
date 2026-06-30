@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I&amp;R Management LLC — General Contracting</title>
+<meta name="description" content="I&R Management LLC — full home flips, remodels, porches, and custom carpentry built right.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* =========================================================
+   I&R MANAGEMENT LLC — GREEN & GOLD EDITION
+   ========================================================= */
+
+:root{
+  --green-deep:   #1E2B20;
+  --green:        #2C3D2A;
+  --green-mid:    #4A5F44;
+  --sage:         #8C9B7F;
+  --parchment:    #F6F1E4;
+  --parchment-dim:#EDE6D2;
+  --ink:          #232019;
+  --ink-soft:     #4A453C;
+
+  --gold:         #B8923F;
+  --gold-bright:  #D4AF6A;
+  --gold-pale:    #E7D8B0;
+
+  --line:         rgba(35,32,25,0.16);
+  --line-dark:    rgba(246,241,228,0.18);
+
+  --font-display: 'Fraunces', serif;
+  --font-body:    'Work Sans', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; }
+body{
+  background:var(--parchment);
+  color:var(--ink);
+  font-family:var(--font-body);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+img{ max-width:100%; display:block; }
+a{ color:inherit; text-decoration:none; }
+.wrap{ max-width:1180px; margin:0 auto; padding:0 28px; }
+
+.eyebrow{
+  font-family:var(--font-mono);
+  font-size:12px;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--gold);
+  display:flex; align-items:center; gap:10px;
+  margin-bottom:16px;
+}
+.eyebrow::before{ content:"◆"; font-size:8px; color:var(--gold); }
+
+h1,h2,h3{
+  font-family:var(--font-display);
+  font-weight:600;
+  line-height:1.08;
+  color:var(--green-deep);
+}
+
+/* =========== NAV =========== */
+header.site{
+  position:sticky; top:0; z-index:100;
+  background:rgba(246,241,228,0.93);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.nav{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:18px 28px; max-width:1180px; margin:0 auto;
+}
+.brand{
+  display:flex; align-items:center; gap:12px;
+  font-family:var(--font-display); font-weight:700; font-size:20px;
+  color:var(--green-deep);
+}
+.brand .mark{ width:34px; height:34px; flex-shrink:0; }
+.nav-links{ display:flex; gap:34px; font-size:14.5px; font-weight:500; }
+.nav-links a{ position:relative; padding:4px 0; color:var(--ink-soft); transition:color .2s ease; }
+.nav-links a:hover{ color:var(--gold); }
+.nav-links a::after{
+  content:""; position:absolute; left:0; bottom:-2px; width:0; height:1.5px;
+  background:var(--gold); transition:width .25s ease;
+}
+.nav-links a:hover::after{ width:100%; }
+.nav-cta{
+  font-family:var(--font-mono); font-size:13px;
+  background:var(--green-deep); color:var(--parchment);
+  padding:10px 20px; border-radius:1px;
+  border:1px solid var(--green-deep);
+  transition:background .2s ease, color .2s ease;
+}
+.nav-cta:hover{ background:var(--gold); border-color:var(--gold); color:var(--green-deep); }
+
+.nav-toggle{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  background:none;
+  border:none;
+  cursor:pointer;
+  padding:6px;
+}
+.nav-toggle span{
+  width:24px; height:2px;
+  background:var(--green-deep);
+  transition:transform .25s ease, opacity .25s ease;
+}
+.nav-toggle.open span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2){ opacity:0; }
+.nav-toggle.open span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+
+.nav-mobile-panel{
+  display:none;
+  flex-direction:column;
+  background:var(--parchment);
+  border-bottom:1px solid var(--line);
+  padding:8px 28px 22px;
+}
+.nav-mobile-panel a{
+  padding:14px 0;
+  font-size:16px;
+  font-weight:500;
+  color:var(--ink-soft);
+  border-bottom:1px solid var(--line);
+}
+.nav-mobile-panel a:last-child{ border-bottom:none; }
+.nav-mobile-panel.open{ display:flex; }
+
+/* =========== HERO — split layout =========== */
+.hero{ background:var(--parchment); padding:84px 0 0; }
+.hero-grid{ display:grid; grid-template-columns:1.05fr 0.95fr; align-items:center; gap:60px; }
+.hero-copy h1{ font-size:clamp(38px,5vw,62px); letter-spacing:-0.01em; margin-bottom:22px; }
+.hero-copy h1 .accent{ color:var(--gold); font-style:italic; }
+.hero-copy p.lead{ font-size:17.5px; color:var(--ink-soft); max-width:480px; margin-bottom:34px; }
+.hero-actions{ display:flex; gap:16px; flex-wrap:wrap; margin-bottom:48px; }
+.btn{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:14px 28px; font-family:var(--font-mono); font-size:13px;
+  letter-spacing:0.02em; border-radius:1px;
+  transition:transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
+}
+.btn-primary{ background:var(--green-deep); color:var(--parchment); border:1px solid var(--green-deep); }
+.btn-primary:hover{ background:var(--gold); border-color:var(--gold); color:var(--green-deep); transform:translateY(-1px); }
+.btn-ghost{ border:1px solid var(--ink); color:var(--ink); }
+.btn-ghost:hover{ border-color:var(--gold); color:var(--gold); transform:translateY(-1px); }
+
+.hero-meta{ display:flex; gap:36px; flex-wrap:wrap; border-top:1px solid var(--line); padding-top:24px; }
+.hero-meta div .num{ font-family:var(--font-display); font-size:26px; color:var(--green-deep); }
+.hero-meta div .lbl{ font-family:var(--font-mono); font-size:10.5px; text-transform:uppercase; letter-spacing:0.08em; color:var(--ink-soft); margin-top:2px; }
+
+.hero-visual{
+  position:relative; aspect-ratio:4/5;
+  background:linear-gradient(160deg, var(--green-mid) 0%, var(--green-deep) 100%);
+  overflow:hidden;
+}
+.hero-visual::before{
+  content:""; position:absolute; inset:0;
+  background-image:repeating-linear-gradient(135deg, rgba(246,241,228,0.05) 0 2px, transparent 2px 26px);
+}
+.hero-visual-content{
+  position:relative; height:100%;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:14px; padding:40px; text-align:center;
+}
+.hero-visual-content svg{ width:64px; height:64px; opacity:0.9; }
+.hero-visual-content span{
+  font-family:var(--font-mono); font-size:11.5px; letter-spacing:0.08em;
+  text-transform:uppercase; color:var(--gold-pale);
+}
+.hero-visual-frame{ position:absolute; inset:18px; border:1px solid var(--gold-pale); opacity:0.55; }
+
+/* =========== SECTION SHELL =========== */
+section{ padding:104px 0; }
+.section-head{ display:flex; justify-content:space-between; align-items:flex-end; gap:24px; margin-bottom:54px; flex-wrap:wrap; }
+.section-head h2{ font-size:clamp(30px,4vw,42px); }
+.section-head p{ max-width:420px; color:var(--ink-soft); font-size:15.5px; }
+
+.divider{ height:1px; background:var(--line); position:relative; }
+.divider::after{
+  content:"◆"; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+  background:var(--parchment); color:var(--gold); font-size:10px; padding:0 14px;
+}
+
+/* =========== ABOUT =========== */
+.about{ background:var(--parchment-dim); }
+.about-grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:64px; align-items:start; }
+.about-copy p{ color:var(--ink-soft); margin-bottom:18px; font-size:16px; }
+.owners{ display:grid; gap:18px; }
+.owner-card{
+  background:var(--parchment); border:1px solid var(--line); padding:24px 26px;
+  display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;
+  position:relative;
+}
+.owner-card::before{ content:""; position:absolute; left:0; top:18px; bottom:18px; width:2px; background:var(--gold); }
+.owner-card h3{ font-size:19px; margin-bottom:3px; }
+.owner-card .role{ font-family:var(--font-mono); font-size:10.5px; text-transform:uppercase; letter-spacing:0.06em; color:var(--gold); display:block; }
+.owner-card .deets{ text-align:right; font-size:13.5px; }
+.owner-card .deets a{ display:block; color:var(--ink-soft); }
+.owner-card .deets a:hover{ color:var(--gold); }
+
+/* =========== SERVICES — numbered list style =========== */
+.services{ background:var(--parchment); }
+.services-list{ border-top:1px solid var(--line); }
+.service-row{
+  display:grid; grid-template-columns:90px 1fr 1.4fr; gap:32px; align-items:start;
+  padding:30px 0; border-bottom:1px solid var(--line); transition:padding-left .25s ease;
+}
+.service-row:hover{ padding-left:10px; }
+.service-row .num{ font-family:var(--font-display); font-size:26px; color:var(--gold); font-style:italic; }
+.service-row h3{ font-size:21px; }
+.service-row p{ color:var(--ink-soft); font-size:15px; }
+
+/* =========== PROJECTS / GALLERY =========== */
+.projects{ background:var(--green-deep); color:var(--parchment); }
+.projects .eyebrow{ color:var(--gold-pale); }
+.projects .eyebrow::before{ color:var(--gold-pale); }
+.projects .section-head h2{ color:var(--parchment); }
+.projects .section-head p{ color:var(--sage); }
+
+.filter-bar{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:46px; }
+.filter-btn{
+  font-family:var(--font-mono); font-size:12px; padding:9px 17px; border:1px solid var(--line-dark);
+  color:var(--gold-pale); border-radius:1px; cursor:pointer; background:transparent; transition:all .2s ease;
+}
+.filter-btn:hover{ border-color:var(--gold); color:var(--gold); }
+.filter-btn.active{ background:var(--gold); border-color:var(--gold); color:var(--green-deep); }
+
+.gallery{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line-dark); border:1px solid var(--line-dark); }
+.project-card{ position:relative; overflow:hidden; cursor:pointer; background:var(--green); }
+.project-card .photo{ aspect-ratio:4/3; width:100%; position:relative; overflow:hidden; }
+.project-card .photo img{ width:100%; height:100%; object-fit:cover; transition:transform .5s ease; }
+.project-card:hover .photo img{ transform:scale(1.06); }
+
+.photo-placeholder{
+  width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:10px; background:repeating-linear-gradient(135deg, #314833 0 4px, #283d2a 4px 8px);
+  color:var(--gold-pale); font-family:var(--font-mono); font-size:11px; text-align:center; padding:18px;
+}
+.photo-placeholder svg{ width:32px; height:32px; opacity:0.85; }
+
+.project-card .info{ padding:22px 22px 24px; background:var(--green-deep); }
+.project-card .tag{ font-family:var(--font-mono); font-size:10.5px; text-transform:uppercase; letter-spacing:0.06em; color:var(--gold); margin-bottom:8px; display:block; }
+.project-card h3{ color:var(--parchment); font-size:18.5px; margin-bottom:6px; }
+.project-card p{ font-size:13.5px; color:var(--sage); }
+
+.gallery-empty{ font-family:var(--font-mono); font-size:13px; color:var(--sage); padding:40px 0; grid-column:1/-1; }
+
+.lightbox{ position:fixed; inset:0; background:rgba(15,18,12,0.92); display:none; align-items:center; justify-content:center; z-index:1000; padding:40px 20px; }
+.lightbox.open{ display:flex; }
+.lightbox-inner{ max-width:900px; width:100%; background:var(--green); border:1px solid var(--gold); position:relative; }
+.lightbox-img{ width:100%; aspect-ratio:16/10; overflow:hidden; }
+.lightbox-img img{ width:100%; height:100%; object-fit:cover; }
+.lightbox-body{ padding:26px 28px; }
+.lightbox-body .tag{ font-family:var(--font-mono); font-size:10.5px; color:var(--gold); text-transform:uppercase; letter-spacing:0.06em; }
+.lightbox-body h3{ color:var(--parchment); font-size:23px; margin:8px 0 10px; }
+.lightbox-body p{ color:var(--sage); font-size:14.5px; }
+.lightbox-close{
+  position:absolute; top:22px; right:30px; color:var(--parchment); font-family:var(--font-mono); font-size:12.5px;
+  cursor:pointer; border:1px solid var(--gold); padding:8px 14px; z-index:2;
+}
+.lightbox-close:hover{ background:var(--gold); color:var(--green-deep); }
+
+/* =========== REVIEWS =========== */
+.reviews{ background:var(--parchment-dim); }
+.reviews-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
+.review-card{ background:var(--parchment-dim); padding:30px 28px; display:flex; flex-direction:column; gap:18px; }
+.review-card .quote-mark{ font-family:var(--font-display); font-size:42px; color:var(--gold); line-height:0.6; }
+.review-card blockquote{ font-size:15.5px; color:var(--ink-soft); line-height:1.5; }
+.stars{ color:var(--gold); font-size:14px; letter-spacing:2px; }
+.review-meta{ margin-top:auto; padding-top:14px; border-top:1px solid var(--line); }
+.review-meta .name{ font-size:14px; font-weight:600; color:var(--green-deep); }
+.review-meta .proj{ font-size:11.5px; color:var(--ink-soft); font-family:var(--font-mono); margin-top:2px; }
+
+/* =========== CONTACT =========== */
+.contact{ background:var(--green-deep); color:var(--parchment); }
+.contact .eyebrow{ color:var(--gold-pale); }
+.contact .eyebrow::before{ color:var(--gold-pale); }
+.contact-grid{ display:grid; grid-template-columns:1fr 1.1fr; gap:64px; }
+.contact h2{ color:var(--parchment); font-size:clamp(30px,4vw,42px); margin-bottom:18px; }
+.contact-lead{ color:var(--sage); font-size:16px; max-width:440px; margin-bottom:40px; }
+
+.contact-cards{ display:grid; gap:16px; }
+.contact-card{ border:1px solid var(--line-dark); padding:22px 24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; }
+.contact-card h3{ color:var(--parchment); font-size:17px; margin-bottom:3px; }
+.contact-card .role{ font-family:var(--font-mono); font-size:10.5px; text-transform:uppercase; color:var(--gold); letter-spacing:0.06em; }
+.contact-card .deets{ text-align:right; font-size:13.5px; }
+.contact-card .deets a{ display:block; color:var(--sage); }
+.contact-card .deets a:hover{ color:var(--gold-bright); }
+
+form.contact-form{ display:flex; flex-direction:column; gap:16px; }
+.contact-form label{ font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:var(--sage); margin-bottom:6px; display:block; }
+.contact-form input, .contact-form select, .contact-form textarea{
+  width:100%; background:transparent; border:1px solid var(--line-dark); color:var(--parchment);
+  padding:12px 14px; font-family:var(--font-body); font-size:14.5px; border-radius:1px;
+}
+.contact-form input::placeholder, .contact-form textarea::placeholder{ color:#7C8870; }
+.contact-form textarea{ resize:vertical; min-height:108px; }
+.contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus{ outline:none; border-color:var(--gold); }
+.contact-form button{
+  align-self:flex-start; margin-top:6px; background:var(--gold); color:var(--green-deep); border:1px solid var(--gold);
+  padding:14px 32px; font-family:var(--font-mono); font-size:13px; border-radius:1px; cursor:pointer;
+  transition:background .2s ease, color .2s ease;
+}
+.contact-form button:hover{ background:var(--gold-bright); border-color:var(--gold-bright); }
+.form-note{ font-size:12px; color:#7C8870; }
+
+footer{ background:var(--green-deep); color:#7C8870; padding:30px 0; border-top:1px solid var(--line-dark); }
+.footer-inner{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; font-size:13px; }
+.footer-inner .brand-mini{ font-family:var(--font-display); color:var(--parchment); font-size:16px; }
+
+@media (max-width:880px){
+  .nav-links{ display:none; }
+  .nav-toggle{ display:flex; }
+  .hero-grid{ grid-template-columns:1fr; }
+  .hero-visual{ order:-1; aspect-ratio:16/9; }
+  .about-grid, .contact-grid{ grid-template-columns:1fr; gap:40px; }
+  .service-row{ grid-template-columns:50px 1fr; }
+  .service-row p{ grid-column:1/-1; }
+  .gallery{ grid-template-columns:1fr 1fr; }
+  .reviews-grid{ grid-template-columns:1fr; }
+  .hero-meta{ gap:24px; }
+}
+@media (max-width:560px){
+  .gallery{ grid-template-columns:1fr; }
+  .hero{ padding-top:64px; }
+  .nav{ padding:16px 20px; }
+  .nav-mobile-panel{ padding:8px 20px 18px; }
+  .wrap{ padding:0 20px; }
+  .hero-actions{ flex-direction:column; align-items:stretch; }
+  .hero-actions .btn{ justify-content:center; }
+  .contact-card{ flex-direction:column; align-items:flex-start; }
+  .contact-card .deets{ text-align:left; }
+  .owner-card{ flex-direction:column; align-items:flex-start; }
+  .owner-card .deets{ text-align:left; }
+  section{ padding:72px 0; }
+}
+@media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="nav">
+    <a href="#top" class="brand">
+      <svg class="mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="6" y="4" width="28" height="32" fill="none" stroke="#1E2B20" stroke-width="1.4"/>
+        <path d="M12 16L20 10L28 16V30H12V16Z" fill="#2C3D2A" stroke="#1E2B20" stroke-width="1.2"/>
+        <rect x="17" y="22" width="6" height="8" fill="#F6F1E4"/>
+        <circle cx="20" cy="8" r="2" fill="#B8923F"/>
+      </svg>
+      I&amp;R Management
+    </a>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#reviews">Reviews</a>
+    </nav>
+    <a href="#contact" class="nav-cta">Get a Quote</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile-panel" id="navMobilePanel">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#projects">Projects</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact">Get a Quote</a>
+  </div>
+</header>
+
+<!-- =========== HERO =========== -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">General Contracting · Washington State</span>
+      <h1>Houses rebuilt with <span class="accent">craft, not shortcuts.</span></h1>
+      <p class="lead">I&amp;R Management LLC is a family-run general contracting company led by Israel and Raquel Rivas — full home flips, remodels, porches, and custom carpentry, built with years of hands-on experience.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">View Our Work</a>
+        <a href="#contact" class="btn btn-ghost">Request a Quote</a>
+      </div>
+      <div class="hero-meta">
+        <div><div class="num">15+</div><div class="lbl">Years Building</div></div>
+        <div><div class="num">100+</div><div class="lbl">Projects Done</div></div>
+        <div><div class="num">4</div><div class="lbl">Specialties</div></div>
+        <div><div class="num">2</div><div class="lbl">Owners On-Site</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-visual-frame"></div>
+      <div class="hero-visual-content">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 30L32 12L54 30V52H10V30Z" stroke="#E7D8B0" stroke-width="1.5"/>
+          <rect x="27" y="38" width="10" height="14" stroke="#E7D8B0" stroke-width="1.5"/>
+          <circle cx="32" cy="8" r="3" fill="#B8923F"/>
+        </svg>
+        <span>Your Project<br>Photo Here</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider" style="margin-top:90px;"></div></div>
+
+<!-- =========== ABOUT =========== -->
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-copy">
+      <span class="eyebrow">Who We Are</span>
+      <h2 style="margin-bottom:22px;">Built by hand.<br>Run by family.</h2>
+      <p>I&amp;R Management LLC is owned and operated by Israel and Raquel Rivas. What started as hands-on remodeling work has grown into a full general contracting company — but the approach hasn't changed: show up, do the work right, and leave every home better than we found it.</p>
+      <p>Over the years we've taken on full house flips down to the studs, kitchen and bathroom remodels, custom porches and decks, and just about everything in between. Every project on this site is real work we've completed.</p>
+    </div>
+    <div class="owners">
+      <div class="owner-card">
+        <div>
+          <h3>Israel Rivas</h3>
+          <span class="role">Owner · Operations</span>
+        </div>
+        <div class="deets">
+          <a href="tel:2065498527">(206) 549-8527</a>
+          <a href="mailto:rivas31.ir@gmail.com">rivas31.ir@gmail.com</a>
+        </div>
+      </div>
+      <div class="owner-card">
+        <div>
+          <h3>Raquel Rivas</h3>
+          <span class="role">Owner · Client Relations</span>
+        </div>
+        <div class="deets">
+          <a href="tel:2062802652">(206) 280-2652</a>
+          <a href="mailto:rivascastellon31@gmail.com">rivascastellon31@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========== SERVICES =========== -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>What We Build</h2>
+      <p>From a full gut-and-flip to a single weekend porch project, we bring the same level of care to every job.</p>
+    </div>
+    <div class="services-list">
+      <div class="service-row">
+        <span class="num">01</span>
+        <h3>Full House Flips</h3>
+        <p>Complete top-to-bottom renovations — structural, electrical, plumbing, finishes — turning distressed properties into move-in ready homes.</p>
+      </div>
+      <div class="service-row">
+        <span class="num">02</span>
+        <h3>Whole Home Remodels</h3>
+        <p>Layout changes, kitchen overhauls, flooring, and finish work for homeowners ready to reimagine the space they already love.</p>
+      </div>
+      <div class="service-row">
+        <span class="num">03</span>
+        <h3>Bathroom Remodels</h3>
+        <p>Tile, vanities, walk-in showers, and fixtures — bathrooms rebuilt for everyday use and resale value.</p>
+      </div>
+      <div class="service-row">
+        <span class="num">04</span>
+        <h3>Porches &amp; Decks</h3>
+        <p>Custom-built porches, decks, and outdoor living spaces designed to hold up to Pacific Northwest weather.</p>
+      </div>
+      <div class="service-row">
+        <span class="num">05</span>
+        <h3>Kitchen Remodels</h3>
+        <p>Cabinets, countertops, and layouts rebuilt around how a family actually uses the kitchen.</p>
+      </div>
+      <div class="service-row" style="border-bottom:1px solid var(--line);">
+        <span class="num">06</span>
+        <h3>Custom Carpentry &amp; More</h3>
+        <p>Built-ins, framing, repairs, and one-off custom jobs — if it needs to be built right, we can take it on.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========== PROJECTS =========== -->
+<section class="projects" id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Portfolio</span>
+      <h2 style="flex-basis:100%;">Projects We've Completed</h2>
+      <p>Every photo below is a real I&amp;R Management job. Filter by project type to browse.</p>
+    </div>
+    <div class="filter-bar" id="filterBar"></div>
+    <div class="gallery" id="gallery"></div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-close" id="lightboxClose">CLOSE ✕</div>
+  <div class="lightbox-inner">
+    <div class="lightbox-img" id="lightboxImg"></div>
+    <div class="lightbox-body">
+      <span class="tag" id="lightboxTag"></span>
+      <h3 id="lightboxTitle"></h3>
+      <p id="lightboxDesc"></p>
+    </div>
+  </div>
+</div>
+
+<!-- =========== REVIEWS =========== -->
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Reviews</span>
+      <h2 style="flex-basis:100%;">What Clients Say</h2>
+      <p>A few words from homeowners we've worked with. Swap these for real reviews any time — see the REVIEWS array in the code.</p>
+    </div>
+    <div class="reviews-grid" id="reviewsGrid"></div>
+  </div>
+</section>
+
+<!-- =========== CONTACT =========== -->
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <span class="eyebrow">Get In Touch</span>
+      <h2>Let's talk about your project.</h2>
+      <p class="contact-lead">Whether it's a full flip, a single room, or you're just not sure where to start — reach out and we'll walk through it together.</p>
+      <div class="contact-cards">
+        <div class="contact-card">
+          <div>
+            <h3>Israel Rivas</h3>
+            <span class="role">Owner · Operations</span>
+          </div>
+          <div class="deets">
+            <a href="tel:2065498527">(206) 549-8527</a>
+            <a href="mailto:rivas31.ir@gmail.com">rivas31.ir@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div>
+            <h3>Raquel Rivas</h3>
+            <span class="role">Owner · Client Relations</span>
+          </div>
+          <div class="deets">
+            <a href="tel:2062802652">(206) 280-2652</a>
+            <a href="mailto:rivascastellon31@gmail.com">rivascastellon31@gmail.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <form class="contact-form" id="contactForm">
+      <div>
+        <label for="name">Your name</label>
+        <input type="text" id="name" name="name" placeholder="Jane Smith" required>
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="jane@email.com" required>
+      </div>
+      <div>
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" name="phone" placeholder="(206) 555-0100">
+      </div>
+      <div>
+        <label for="projectType">Project type</label>
+        <select id="projectType" name="projectType">
+          <option>Full Home Flip</option>
+          <option>Whole Home Remodel</option>
+          <option>Bathroom Remodel</option>
+          <option>Kitchen Remodel</option>
+          <option>Porch / Deck</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div>
+        <label for="message">Tell us about the project</label>
+        <textarea id="message" name="message" placeholder="A few details about your space and timeline..."></textarea>
+      </div>
+      <button type="submit">Send Message</button>
+      <p class="form-note">This opens your email app addressed to Israel &amp; Raquel with your message pre-filled.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div class="brand-mini">I&amp;R Management LLC</div>
+    <div>General Contracting · Washington State</div>
+    <div>© <span id="year"></span> I&amp;R Management LLC</div>
+  </div>
+</footer>
+
+<script>
+/* =========================================================
+   PROJECTS DATA
+   -----------------------------------------------------------
+   HOW TO ADD YOUR OWN PHOTOS:
+   1. Put your image files in an "images" folder next to this
+      index.html file (e.g. images/flip-renton-01.jpg).
+   2. For each project below, set "image" to that file path,
+      e.g. "images/flip-renton-01.jpg".
+   3. If "image" is left as "" (empty), a placeholder block is
+      shown automatically instead — so you can fill these in
+      gradually without breaking the layout.
+   4. Add as many objects to this array as you want. Each one
+      automatically becomes a card in the gallery, filterable
+      by category.
+   5. "category" controls which filter button shows the project.
+      Use one of: "flip", "remodel", "bathroom", "kitchen", "porch", "custom"
+      (or add a brand new category string — the filter bar
+      below builds itself from whatever categories you use).
+========================================================= */
+const PROJECTS = [
+  { title: "Full Gut Flip — Bungalow Renovation", category: "flip", categoryLabel: "Full Flip",
+    description: "Complete top-to-bottom renovation: new layout, electrical, plumbing, flooring, and finishes throughout.", image: "" },
+  { title: "Modern Farmhouse Kitchen Remodel", category: "kitchen", categoryLabel: "Kitchen",
+    description: "New custom cabinetry, quartz countertops, and an open layout built around how the family cooks.", image: "" },
+  { title: "Walk-In Shower Bathroom Remodel", category: "bathroom", categoryLabel: "Bathroom",
+    description: "Full tile walk-in shower, new vanity, and updated fixtures in a tight footprint.", image: "" },
+  { title: "Covered Front Porch Build", category: "porch", categoryLabel: "Porch",
+    description: "Custom-built covered porch with cedar posts and railing, built to handle Pacific Northwest weather.", image: "" },
+  { title: "Whole Home Interior Remodel", category: "remodel", categoryLabel: "Remodel",
+    description: "Reworked floor plan, new flooring throughout, and updated finishes from front door to back.", image: "" },
+  { title: "Custom Built-In Shelving", category: "custom", categoryLabel: "Custom Carpentry",
+    description: "Floor-to-ceiling custom built-ins, designed and framed on site to fit the room exactly.", image: "" },
+  { title: "Backyard Deck Addition", category: "porch", categoryLabel: "Porch / Deck",
+    description: "New pressure-treated deck addition with built-in bench seating and stair access to the yard.", image: "" },
+  { title: "Primary Bathroom Remodel", category: "bathroom", categoryLabel: "Bathroom",
+    description: "Double vanity, soaking tub, and heated tile flooring in a full primary bathroom rebuild.", image: "" },
+  { title: "Investment Property Flip", category: "flip", categoryLabel: "Full Flip",
+    description: "Distressed property brought back to move-in condition — structural repairs through final paint.", image: "" }
+];
+
+const CATEGORY_LABELS = {
+  flip: "Full Flips", remodel: "Remodels", bathroom: "Bathrooms",
+  kitchen: "Kitchens", porch: "Porches & Decks", custom: "Custom Work"
+};
+
+const placeholderSVG = `
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4 18L9 11L13 15L16 11L20 18H4Z" stroke="#E7D8B0" stroke-width="1.3" stroke-linejoin="round"/>
+    <circle cx="8" cy="7" r="1.6" stroke="#E7D8B0" stroke-width="1.3"/>
+    <rect x="3" y="4" width="18" height="16" rx="1" stroke="#E7D8B0" stroke-width="1.3"/>
+  </svg>`;
+
+function buildFilterBar(){
+  const bar = document.getElementById('filterBar');
+  const cats = ['all', ...new Set(PROJECTS.map(p => p.category))];
+  bar.innerHTML = cats.map(c => {
+    const label = c === 'all' ? 'All Projects' : (CATEGORY_LABELS[c] || c);
+    return `<button class="filter-btn${c==='all' ? ' active':''}" data-cat="${c}">${label}</button>`;
+  }).join('');
+  bar.addEventListener('click', e => {
+    const btn = e.target.closest('.filter-btn');
+    if(!btn) return;
+    bar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderGallery(btn.dataset.cat);
+  });
+}
+
+function cardMedia(p){
+  if(p.image){ return `<img src="${p.image}" alt="${p.title}" loading="lazy">`; }
+  return `<div class="photo-placeholder">${placeholderSVG}<span>Add photo:<br>set "image" for<br>"${p.title}"</span></div>`;
+}
+
+function renderGallery(filter){
+  const gallery = document.getElementById('gallery');
+  const items = filter === 'all' ? PROJECTS : PROJECTS.filter(p => p.category === filter);
+  if(items.length === 0){
+    gallery.innerHTML = `<div class="gallery-empty">No projects in this category yet.</div>`;
+    return;
+  }
+  gallery.innerHTML = items.map((p) => `
+    <div class="project-card" data-index="${PROJECTS.indexOf(p)}">
+      <div class="photo">${cardMedia(p)}</div>
+      <div class="info">
+        <span class="tag">${p.categoryLabel}</span>
+        <h3>${p.title}</h3>
+        <p>${p.description}</p>
+      </div>
+    </div>
+  `).join('');
+  gallery.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('click', () => openLightbox(PROJECTS[card.dataset.index]));
+  });
+}
+
+function openLightbox(p){
+  document.getElementById('lightboxImg').innerHTML = cardMedia(p);
+  document.getElementById('lightboxTag').textContent = p.categoryLabel;
+  document.getElementById('lightboxTitle').textContent = p.title;
+  document.getElementById('lightboxDesc').textContent = p.description;
+  document.getElementById('lightbox').classList.add('open');
+}
+document.getElementById('lightboxClose').addEventListener('click', () => {
+  document.getElementById('lightbox').classList.remove('open');
+});
+document.getElementById('lightbox').addEventListener('click', e => {
+  if(e.target.id === 'lightbox') e.target.classList.remove('open');
+});
+
+buildFilterBar();
+renderGallery('all');
+
+/* =========================================================
+   REVIEWS DATA — edit or add to this array freely.
+========================================================= */
+const REVIEWS = [
+  { name: "Maria G.", project: "Full Home Flip", stars: 5,
+    quote: "Israel and Raquel turned a house we almost gave up on into the home we live in now. Every detail was handled, on time and on budget." },
+  { name: "Tom & Linda R.", project: "Bathroom Remodel", stars: 5,
+    quote: "Communication was great the whole way through. The new walk-in shower looks better than anything we could've imagined." },
+  { name: "David K.", project: "Covered Porch Build", stars: 5,
+    quote: "Solid craftsmanship and they actually showed up when they said they would. Our porch has held up through two winters with zero issues." }
+];
+
+function renderReviews(){
+  const grid = document.getElementById('reviewsGrid');
+  grid.innerHTML = REVIEWS.map(r => `
+    <div class="review-card">
+      <div class="quote-mark">"</div>
+      <div class="stars">${'★'.repeat(r.stars)}${'☆'.repeat(5 - r.stars)}</div>
+      <blockquote>${r.quote}</blockquote>
+      <div class="review-meta">
+        <div class="name">${r.name}</div>
+        <div class="proj">${r.project}</div>
+      </div>
+    </div>
+  `).join('');
+}
+renderReviews();
+
+document.getElementById('contactForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const phone = document.getElementById('phone').value;
+  const type = document.getElementById('projectType').value;
+  const message = document.getElementById('message').value;
+  const subject = encodeURIComponent(`New project inquiry: ${type}`);
+  const body = encodeURIComponent(
+    `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nProject type: ${type}\n\nMessage:\n${message}`
+  );
+  window.location.href = `mailto:rivas31.ir@gmail.com,rivascastellon31@gmail.com?subject=${subject}&body=${body}`;
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* Mobile nav toggle */
+const navToggle = document.getElementById('navToggle');
+const navMobilePanel = document.getElementById('navMobilePanel');
+navToggle.addEventListener('click', () => {
+  const isOpen = navMobilePanel.classList.toggle('open');
+  navToggle.classList.toggle('open', isOpen);
+  navToggle.setAttribute('aria-expanded', isOpen);
+});
+navMobilePanel.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navMobilePanel.classList.remove('open');
+    navToggle.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  });
+});
+</script>
+</body>
+</html>
